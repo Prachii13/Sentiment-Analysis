@@ -1,0 +1,6 @@
+sentiment_analysis_tool/
+│
+├── sentiment_analyzer.py
+├── requirements.txt
+├── README.md
+└── .gitignore
