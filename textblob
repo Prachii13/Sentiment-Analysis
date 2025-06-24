@@ -1,0 +1,39 @@
+
+---
+
+### ⚙️ `sentiment_analyzer.py`
+```python
+from textblob import TextBlob
+
+def analyze_sentiment(text):
+    blob = TextBlob(text)
+    polarity = blob.sentiment.polarity
+
+    if polarity > 0:
+        sentiment = "Positive 🙂"
+    elif polarity < 0:
+        sentiment = "Negative 🙁"
+    else:
+        sentiment = "Neutral 😐"
+
+    return polarity, sentiment
+
+if __name__ == "__main__":
+    print("🧠 Sentiment Analyzer")
+    choice = input("Analyze (1) custom text or (2) text file? Enter 1 or 2: ")
+
+    if choice == "1":
+        user_input = input("Enter text: ")
+        score, label = analyze_sentiment(user_input)
+    elif choice == "2":
+        filename = input("Enter file path (e.g., review.txt): ")
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        score, label = analyze_sentiment(content)
+    else:
+        print("❌ Invalid choice.")
+        exit()
+
+    print("\n📊 Sentiment Report")
+    print(f"Polarity Score: {score:.2f}")
+    print(f"Sentiment: {label}")
